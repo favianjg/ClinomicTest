@@ -3,7 +3,7 @@ for the email messaging
 
 Start celery worker:
 
-*celery -A ClinomicTest worker -l info -P threads*
+*celery -A ClinomicTest worker -l INFO -P threads*
 
 the -l is a lowercase L not an I
 
