@@ -18,6 +18,7 @@ from django.contrib.auth.models import User
 from django.urls import path, include
 from rest_framework import routers, serializers, viewsets
 
+from reminder.views import ReminderViewSet
 from todoapi.views import BoardViewSet, TodoViewSet, TodoNotDoneViewSet, BoardDetailViewSet
 
 
@@ -37,6 +38,7 @@ class UserViewSet(viewsets.ModelViewSet):
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
+router.register(r'reminders', ReminderViewSet)
 router.register(r'board_overview', BoardViewSet)
 router.register(r'board_detail', BoardDetailViewSet)
 router.register(r'todo_list', TodoViewSet)
@@ -46,5 +48,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('', include('todoapi.urls')),
+    path('', include('reminder.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
